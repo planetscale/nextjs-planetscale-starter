@@ -58,10 +58,10 @@ function Page() {
     <>
       <AdminLayout title="Users">
         {/* {/* Activity list (smallest breakpoint only) */}
-        <div className="shadow sm:hidden">
+        <div className=" sm:hidden">
           <ul
             role="list"
-            className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden"
+            className="mt-2 divide-y divide-gray-200 overflow-hidden  sm:hidden"
           >
             {usersQuery?.data &&
               usersQuery.data.map((user) => {
