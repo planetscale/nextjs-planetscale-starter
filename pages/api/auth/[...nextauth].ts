@@ -28,7 +28,6 @@ export default NextAuth({
   },
   pages: {
     signIn: "/sign-in",
-    // signIn: '/auth/signin',
     // signOut: "/auth/logout",
     // error: "/auth/error", // Error code passed in query string as ?error=
   },
@@ -65,39 +64,34 @@ export default NextAuth({
           },
         });
 
-        console.log("maybeUser", maybeUser);
-
         if (!maybeUser) {
-          // maybeUser = await _createUser({
-          //   data: {
-          //     email: credentials.email,
-          //     password: await hashPassword(credentials.password),
-          //   },
-          // });
-          throw new Error("Some unknown user error");
+          const { email, password } = credentials;
+
+          if (!email || !email.includes("@")) {
+            throw new Error("Invalid email");
+          }
+
+          if (!password || password.trim().length < 12) {
+            throw new Error(
+              "Invalid input - password should be at least 12 characters long."
+            );
+          }
+
+          maybeUser = await _createUser({
+            data: {
+              email: credentials.email,
+              password: await hashPassword(credentials.password),
+            },
+          });
         } else {
-          // TODO: If single form for sign up and sign ing
-        }
-
-        const { email, password } = credentials;
-
-        if (!email || !email.includes("@")) {
-          throw new Error("Invalid email");
-        }
-
-        if (!password || password.trim().length < 12) {
-          throw new Error(
-            "Invalid input - password should be at least 12 characters long."
+          const isValid = await verifyPassword(
+            credentials.password,
+            maybeUser.password
           );
-        }
 
-        const isValid = await verifyPassword(
-          credentials.password,
-          maybeUser.password
-        );
-
-        if (!isValid) {
-          throw new Error("Incorrect password");
+          if (!isValid) {
+            throw new Error("Incorrect password");
+          }
         }
 
         return {
