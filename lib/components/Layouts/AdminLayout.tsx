@@ -6,6 +6,7 @@ import { _getAdministrator } from "@api/administrator/_operations";
 import { UserIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import classNames from "classnames";
+import Link from "next/link";
 
 const navigation = [
   { name: "Users", href: "#", current: true },
@@ -81,19 +82,19 @@ const AdminLayout = (props) => {
               <div className="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
                 <div className="flex flex-1 ">
                   {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? "border-b text-black"
-                          : " hover:border-b  hover:border-gray-200 text-gray-600 ",
-                        "group flex items-center px-2 py-2 text-sm leading-6 font-medium"
-                      )}
-                      aria-current={item.current ? "page" : undefined}
-                    >
-                      {item.name}
-                    </a>
+                    <Link key={item.name} href={item.href}>
+                      <a
+                        className={classNames(
+                          item.current
+                            ? "border-b text-black"
+                            : " hover:border-b  hover:border-gray-200 text-gray-600 ",
+                          "group flex items-center px-2 py-2 text-sm leading-6 font-medium"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -102,7 +103,7 @@ const AdminLayout = (props) => {
           <main className="flex-1 pb-8">
             <div className="bg-white ">
               <div className="px-4 sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
-                <div className="py-6 md:flex md:items-center md:justify-between">
+                <div className="pt-6 pb-2 md:flex md:items-center md:justify-between">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center">
                       <div>
@@ -118,7 +119,7 @@ const AdminLayout = (props) => {
               </div>
             </div>
 
-            <div className="mt-8">{props.children}</div>
+            <div className="mt-2">{props.children}</div>
           </main>
         </div>
       </div>
