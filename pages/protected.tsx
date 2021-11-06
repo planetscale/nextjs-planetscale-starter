@@ -24,6 +24,18 @@ const Page = () => {
             route. You can see it because you're logged in.
           </h1>
         </div>
+        <blockquote>
+          <code>
+            <pre>
+              <p>This page is protected using the useSession hook.</p>
+              <p>Either way works.</p>
+              <p>
+                But in this case the session is <strong>not</strong> available
+                on the first render.
+              </p>
+            </pre>
+          </code>
+        </blockquote>
       </AppLayout>
     </>
   );

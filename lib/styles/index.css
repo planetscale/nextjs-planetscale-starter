@@ -44,3 +44,8 @@
 .button__xl {
   @apply px-6 py-3 text-base;
 }
+
+blockquote {
+  @apply bg-gray-200;
+  @apply my-6 p-2;
+}

@@ -33,6 +33,13 @@ const Page = (props) => {
             </>
           )}
         </div>
+        <blockquote>
+          <code>
+            <pre>
+              <p>This page is unprotected.</p>
+            </pre>
+          </code>
+        </blockquote>
       </AppLayout>
     </>
   );
