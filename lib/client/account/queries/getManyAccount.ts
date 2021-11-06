@@ -1,16 +1,9 @@
-import { Prisma } from "@db/index";
-import { ACCOUNT_API_URL } from "..";
+import { Prisma } from "@db/index"
+import superagent from "superagent"
+import { ACCOUNT_API_URL } from ".."
 
 export const getManyAccount = async (args: Prisma.AccountFindManyArgs) => {
-  const response = await fetch(`${ACCOUNT_API_URL}/getMany`, {
-    method: "POST",
-    body: JSON.stringify({ data: args }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await superagent.post(`${ACCOUNT_API_URL}/getMany`).send({ data: args })
 
-  const j = await response.json();
-
-  return j.data;
-};
+  return response.body.data
+}
