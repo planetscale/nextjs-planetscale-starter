@@ -1,9 +1,10 @@
 [build]
-command = "yarn db:generate && yarn build"
+  command = "yarn db:generate && yarn build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [template.environment]
 DATABASE_URL="database"
-BASE_URL="The url of the application"
-NEXT_PUBLIC_BASE_URL="The url of the application"
-NEXTAUTH_URL="The url of the application"
 NEXTAUTH_SECRET="secret"

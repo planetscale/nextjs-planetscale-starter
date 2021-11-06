@@ -43,3 +43,6 @@ yarn-error.log*
 .vscode
 
 db/migrations
+
+# Local Netlify folder
+.netlify
