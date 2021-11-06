@@ -20,8 +20,7 @@ https://next-auth.js.org/configuration/options#json-web-token-options
 
 
 ## Deploy to Netlify
-https://app.netlify.com/start/deploy?repository=https://github.com/femyeda/nextjs-planetscale-starter/
-
+[![Netlify Status](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/femyeda/starter)
 
 ## Getting Started
 1. Start planetscale instance \

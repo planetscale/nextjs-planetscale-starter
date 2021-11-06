@@ -1,6 +1,5 @@
 [build]
-command = "yarn generate"
-publish = "dist"
+command = "yarn db:generate && yarn build"
 
 [template.environment]
 NEXT_PUBLIC_BASE_URL="The url of the application"
