@@ -11,14 +11,13 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session} refetchInterval={5 * 60}>
       <QueryClientProvider client={queryClient}>
-        {/* {Component.auth ? (
-        <Auth>
+        {Component.auth ? (
+          <Auth>
+            <Component {...pageProps} />
+          </Auth>
+        ) : (
           <Component {...pageProps} />
-        </Auth>
-      ) : (
-        <Component {...pageProps} />
-      )} */}
-        <Component {...pageProps} />
+        )}
       </QueryClientProvider>
     </SessionProvider>
   );
@@ -33,7 +32,7 @@ function Auth({ children }) {
   }, [isUser, status]);
 
   if (isUser) {
-    return children;
+    return React.cloneElement(children, { session: session });
   }
 
   // Session is being fetched, or no user.
