@@ -61,14 +61,10 @@ export default function Page({ csrfToken, providers }) {
         </a>
       </div>
       <div className=" flex flex-col justify-center sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md text-center ">
-          <p>Sign In</p>
-          <div className="mt-4 text-center items-center justify-center text-sm flex flex-col md:flex-row space-x-1">
-            <span>Don&apos;t have an account?</span>
-            <Link href="/sign-up">
-              <a className="font-medium text-blue-500">Create one.</a>
-            </Link>
-          </div>
+        <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
+          <h1 className="text-xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+            Sign In
+          </h1>
         </div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="py-8 px-4 mx-2 rounded-sm sm:px-10">
