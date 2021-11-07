@@ -1,0 +1,56 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+
+/* body {
+  font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji;
+} */
+
+.button {
+  @apply inline-flex px-2.5 py-1.5 text-xs text-center items-center justify-center border border-transparent font-medium shadow-sm text-white bg-black focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-gray-800;
+  @apply disabled:bg-opacity-80;
+  @apply rounded-md;
+}
+
+.button__round {
+  @apply rounded-full !important;
+}
+
+.button__secondary {
+  @apply bg-white text-black;
+  @apply border border-gray-400;
+}
+
+.button__third {
+  @apply bg-black text-white;
+}
+
+.button__sm {
+  @apply px-2.5 py-1.5 text-xs;
+}
+
+.button__md {
+  @apply px-3 py-2 text-sm;
+}
+
+.button__lg {
+  @apply px-4 py-2 text-sm;
+}
+
+.button__xl {
+  @apply px-6 py-3 text-base;
+}
+
+blockquote {
+  @apply bg-gray-200;
+  @apply my-6 p-2;
+  @apply overflow-auto break-words;
+}
+
+a {
+  @apply text-blue-300;
+}
