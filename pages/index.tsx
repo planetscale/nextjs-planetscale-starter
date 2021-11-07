@@ -5,7 +5,7 @@ const Page = () => {
     <>
       <AppLayout>
         <blockquote>
-          <h1>Welcome! to the planet scale starter application.</h1>
+          <h1>Welcome to the PlanetScale Next.js Starter App!</h1>
 
           <p>
             This is an example site to demonstrate how to use{" "}
