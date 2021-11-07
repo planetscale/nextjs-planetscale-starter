@@ -3,10 +3,6 @@ import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  _getAdministrator,
-  _getManyAdministrator,
-} from "@api/administrator/_operations";
 
 const MINIMUM_ACTIVITY_TIMEOUT = 850;
 type LoginFormValues = {

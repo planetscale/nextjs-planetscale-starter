@@ -3,10 +3,8 @@ import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  _getAdministrator,
-  _getManyAdministrator,
-} from "@api/administrator/_operations";
+import { _getManyUser } from "@api/user/_operations";
+import superagent from "superagent";
 
 const MINIMUM_ACTIVITY_TIMEOUT = 850;
 type LoginFormValues = {
@@ -21,21 +19,15 @@ export default function Page({ csrfToken }) {
   const { register, handleSubmit } = useForm();
 
   const createAdminAccountHandler = async (data: LoginFormValues) => {
-    const req = await fetch("/api/auth/administrator/create", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/admin`,
+    const response = await superagent
+      .post("/api/auth/administrator/create")
+      .send({
         csrfToken: data.csrfToken,
         email: data.email,
         password: data.password,
-      }),
-    });
+      });
 
-    return req;
+    return response.body;
   };
   const onSubmit = async (data: LoginFormValues) => {
     setSubmitting(true);
@@ -153,7 +145,11 @@ export default function Page({ csrfToken }) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const administrators = await _getManyAdministrator({});
+  const administrators = await _getManyUser({
+    where: {
+      role: "admin",
+    },
+  });
 
   if (administrators && administrators.length > 0) {
     return {

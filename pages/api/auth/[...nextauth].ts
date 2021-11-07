@@ -4,10 +4,6 @@ import GitHubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import { _getUser, _createUser } from "@api/user/_operations";
-import {
-  _getAdministrator,
-  _createAdministrator,
-} from "@api/administrator/_operations";
 
 import { verifyPassword, hashPassword } from "@lib/auth/passwords";
 import { PrismaClient } from "@prisma/client";
@@ -120,7 +116,7 @@ export default NextAuth({
         },
       },
       async authorize(credentials) {
-        let maybeAdministrator = await _getAdministrator({
+        let maybeUser = await _getUser({
           where: {
             email: credentials.email,
           },
@@ -129,10 +125,15 @@ export default NextAuth({
             email: true,
             password: true,
             name: true,
+            role: true,
           },
         });
 
-        if (!maybeAdministrator) {
+        if (!maybeUser) {
+          throw new Error("Unauthorized.");
+        }
+
+        if (maybeUser?.role !== "admin") {
           throw new Error("Unauthorized.");
         }
 
@@ -148,7 +149,7 @@ export default NextAuth({
         }
         const isValid = await verifyPassword(
           credentials.password,
-          maybeAdministrator.password
+          maybeUser.password
         );
 
         if (!isValid) {
@@ -156,11 +157,10 @@ export default NextAuth({
         }
 
         return {
-          id: maybeAdministrator.id,
-          email: maybeAdministrator.email,
-          name: maybeAdministrator.name,
-          username: maybeAdministrator.email,
-          type: "administrator",
+          id: maybeUser.id,
+          email: maybeUser.email,
+          name: maybeUser.name,
+          role: maybeUser.role,
         };
       },
     }),
