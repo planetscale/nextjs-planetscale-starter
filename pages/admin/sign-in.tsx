@@ -23,7 +23,6 @@ export default function Page({ csrfToken }) {
   const onSubmit = async (data: LoginFormValues) => {
     setSubmitting(true);
     try {
-      console.log(data);
       signIn("admin-login", {
         callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/admin`,
         redirect: true,
