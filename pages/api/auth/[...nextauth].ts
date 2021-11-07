@@ -11,6 +11,7 @@ import {
 
 import { verifyPassword, hashPassword } from "@lib/auth/passwords";
 import { PrismaClient } from "@prisma/client";
+import { Session } from "@lib/auth/session";
 
 const prisma = new PrismaClient({
   errorFormat: "minimal",
@@ -61,6 +62,7 @@ export default NextAuth({
             email: true,
             password: true,
             name: true,
+            role: true,
           },
         });
 
@@ -98,6 +100,7 @@ export default NextAuth({
           id: maybeUser.id,
           email: maybeUser.email,
           name: maybeUser.name,
+          role: maybeUser.role,
         };
       },
     }),
@@ -169,11 +172,25 @@ export default NextAuth({
     async redirect({ url, baseUrl }) {
       return url.startsWith(baseUrl) ? url : baseUrl;
     },
-    async session({ session, token, user }) {
-      return session;
-    },
     async jwt({ token, user, account, profile, isNewUser }) {
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+      }
+
       return token;
+    },
+    async session({ session, token, user }) {
+      const sess: Session = {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id as string,
+          role: token.role as string,
+        },
+      };
+
+      return sess;
     },
   },
 });

@@ -48,4 +48,9 @@
 blockquote {
   @apply bg-gray-200;
   @apply my-6 p-2;
+  @apply overflow-auto break-words;
+}
+
+a {
+  @apply text-blue-300;
 }

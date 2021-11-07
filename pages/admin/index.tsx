@@ -1,13 +1,12 @@
 import { useQuery } from "react-query";
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { _getAdministrator } from "@api/administrator/_operations";
-import isEmpty from "lodash/isEmpty";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import { GetServerSidePropsContext } from "next";
 import { getManyUser } from "@client/user/queries/getManyUser";
 import classNames from "classnames";
 import AdminLayout from "@lib/components/Layouts/AdminLayout";
+import { getSession } from "@lib/auth/session";
 
 const statusStyles = {
   true: "bg-green-100 text-green-800",
@@ -180,17 +179,7 @@ export default Page;
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context);
 
-  if (!session) {
-    return { redirect: { permanent: false, destination: "/" } };
-  }
-
-  const administrator = await _getAdministrator({
-    where: {
-      email: session.user.email,
-    },
-  });
-
-  if (isEmpty(administrator)) {
+  if (!session || session?.user?.role !== "admin") {
     return { redirect: { permanent: false, destination: "/" } };
   }
 

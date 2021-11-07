@@ -7,7 +7,6 @@ import {
   getProviders,
 } from "next-auth/react";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -148,6 +147,7 @@ export default function Page({ csrfToken, providers }) {
                 {providers.map((provider) => {
                   return (
                     <button
+                      key={provider}
                       type="button"
                       onClick={() => handleProviderSignIn(provider)}
                       className="button button__secondary inline-flex space-x-2"

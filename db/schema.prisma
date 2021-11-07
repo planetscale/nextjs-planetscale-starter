@@ -13,17 +13,6 @@ generator client {
     previewFeatures = ["referentialIntegrity"]
 }
 
-model Administrator {
-    id         String    @id @default(cuid())
-    createdAt  DateTime  @default(now())
-    updatedAt  DateTime  @updatedAt
-    email      String    @unique
-    password   String
-    name       String?
-    isVerified Boolean?  @default(false)
-    sessions   Session[]
-}
-
 model Account {
     id                       String   @id @default(cuid())
     createdAt                DateTime @default(now())
@@ -49,13 +38,11 @@ model Account {
 }
 
 model Session {
-    id              String         @id @default(cuid())
-    sessionToken    String         @unique
-    expires         DateTime
-    user            User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId          String?
-    administrator   Administrator? @relation(fields: [administratorId], references: [id], onDelete: Cascade)
-    administratorId String?
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    expires      DateTime
+    user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId       String?
 }
 
 model User {
@@ -67,6 +54,7 @@ model User {
     password      String?
     emailVerified DateTime?
     image         String?
+    role          String?   @default("user")
     accounts      Account[]
     sessions      Session[]
 }
@@ -78,14 +66,3 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
-
-// model Account {
-//     id         String   @id @default(cuid())
-//     createdAt  DateTime @default(now())
-//     updatedAt  DateTime @updatedAt
-//     email      String   @unique
-//     password   String?
-//     name       String?
-//     bio        String?
-//     isVerified Boolean? @default(false)
-// }

@@ -21,12 +21,24 @@ const AppLayout = (props) => {
       href: "/",
     },
     {
-      title: "Protected",
-      href: "/protected",
+      title: "Client",
+      href: "/client",
     },
     {
-      title: "Protected 2",
-      href: "/protected2",
+      title: "Server",
+      href: "/server",
+    },
+    {
+      title: "With Session",
+      href: "/with-session",
+    },
+    {
+      title: "Client Redirect",
+      href: "/client-redirect",
+    },
+    {
+      title: "Server Redirect",
+      href: "/server-redirect",
     },
   ];
 
@@ -40,7 +52,6 @@ const AppLayout = (props) => {
                 <button
                   type="button"
                   className="px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 "
-                  onClick={() => true}
                 >
                   <img
                     className="h-8 w-8 mx-auto"
@@ -125,7 +136,7 @@ const AppLayout = (props) => {
                       <a
                         className={classNames(
                           item.href === currentPath
-                            ? "border-b text-black"
+                            ? "border-b border-indigo-600 text-black"
                             : " hover:border-b  hover:border-gray-200 text-gray-600 ",
                           "group flex items-center px-2 py-2 text-sm leading-6 font-medium"
                         )}
