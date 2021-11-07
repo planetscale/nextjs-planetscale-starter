@@ -67,8 +67,8 @@ export default function Page({ csrfToken }) {
       </div>
       <div className=" flex flex-col justify-center py-12 sm:px-6 lg:px-8 mt-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md text-center ">
-          <p>Welcome to the PlanetScale Starter</p>
-          <p>Get started by creating an administrative account to ...</p>
+          <p>Welcome to the PlanetScale Next.js Starter App</p>
+          <p>Get started by creating an administrative account to setup.</p>
         </div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="py-8 px-4 mx-2 rounded-sm sm:px-10">
