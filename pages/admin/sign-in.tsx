@@ -20,7 +20,7 @@ export default function Page({ csrfToken }) {
     setSubmitting(true);
     try {
       signIn("admin-login", {
-        callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/admin`,
+        callbackUrl: "/admin",
         redirect: true,
         email: data.email,
         password: data.password,

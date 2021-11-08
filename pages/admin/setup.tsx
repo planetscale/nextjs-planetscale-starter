@@ -35,7 +35,7 @@ export default function Page({ csrfToken }) {
       createAdminAccountHandler(data)
         .then((response) => {
           signIn("admin-login", {
-            callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/admin`,
+            callbackUrl: "/admin",
             email: data.email,
             password: data.password,
           });

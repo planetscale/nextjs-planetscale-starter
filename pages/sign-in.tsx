@@ -29,7 +29,7 @@ export default function Page({ csrfToken, providers }) {
     setSubmitting(true);
     try {
       signIn("app-login", {
-        callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+        callbackUrl: "/",
         email: data.email,
         password: data.password,
       });
@@ -64,9 +64,7 @@ export default function Page({ csrfToken, providers }) {
           <h1 className="text-xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
             Sign In
           </h1>
-          <h2>
-            Sign in with an existing account, or create new account.
-          </h2>          
+          <h2>Sign in with an existing account, or create new account.</h2>
         </div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="py-8 px-4 mx-2 rounded-sm sm:px-10">
