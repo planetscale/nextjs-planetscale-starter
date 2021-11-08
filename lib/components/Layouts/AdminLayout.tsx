@@ -1,8 +1,6 @@
-import { getSession, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { _getAdministrator } from "@api/administrator/_operations";
 import { UserIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import classNames from "classnames";
