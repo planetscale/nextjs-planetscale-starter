@@ -22,7 +22,7 @@ For more information on why we created this starter app, read me more in our [bl
 **Prerequisites:**
 A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#installation), and [Yarn](https://yarnpkg.com/getting-started/install)
 
-TODO expand on steps
+TODO expand on steps, gotta do a few steps to set up the database and its schema to run the starter app
 
 1. Create a PlanetScale database
 2. Create a shadow branch
@@ -37,7 +37,7 @@ TODO expand on steps
    `NEXT_PUBLIC_BASE_URL=http://localhost:3000` \
    `BASE_URL=http://localhost:3000`
 6. Run `yarn install`
-7. Run `yarn db:migrate`. After this step, the database schema is ready and you can deploy to Netlify.
+7. Run `yarn db:migrate`. After this step, the database schema is ready and you can deploy to Netlify. You can either seed data and run locally, or skip to the one-click deploy to Netlify.
 8. Run `yarn db:seed`
 9. Run `yarn dev`
 
@@ -50,7 +50,10 @@ The one-click deploy allows you to connect Netlify to your GitHub account to clo
 By clicking the above button, you will be navigated to the Netlify’s direct deploy page with the project’s repository passed as parameters in the url. Click the **Connect to GitHub** button, name your repository and enter....
 
 TODO what environment variables are needed for Netlify and how to get them
-- `DATABASE_URL`
+- `DATABASE_URL` (get this one from inside PlanetScale connect modal, Prisma dropdown and copy URL from snippet)
+- `NEXTAUTH_SECRET`
+
+TODO are these needed? 
 - `NEXTAUTH_URL`
 - `NEXT_PUBLIC_BASE_URL`
 - `BASE_URL`
