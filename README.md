@@ -40,6 +40,7 @@ TODO expand on steps, gotta do a few steps to set up the database and its schema
 7. Run `yarn db:migrate`. After this step, the database schema is ready and you can deploy to Netlify. You can either seed data and run locally, or skip to the one-click deploy to Netlify.
 8. Run `yarn db:seed`
 9. Run `yarn dev`
+10. Go to `https://localhost:3000/admin/setup` to create an admin account to start.
 
 ## One-click Deploy with Netlify (recommended)
 
@@ -59,6 +60,8 @@ TODO are these needed?
 - `BASE_URL`
 
 > Note: The initial build will fail if the database is not set up following TODO
+
+Once it is live, go to the `/admin/setup` page to create an admin account to get started. 
 
 ### Caveats
 
