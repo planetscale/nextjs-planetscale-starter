@@ -6,12 +6,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { _getUser, _createUser } from "@api/user/_operations";
 
 import { verifyPassword, hashPassword } from "@lib/auth/passwords";
-import { PrismaClient } from "@prisma/client";
 import { Session } from "@lib/auth/session";
+import prisma from "@db";
 
-const prisma = new PrismaClient({
-  errorFormat: "minimal",
-});
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
