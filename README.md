@@ -37,7 +37,7 @@ TODO expand on steps
    `NEXT_PUBLIC_BASE_URL=http://localhost:3000` \
    `BASE_URL=http://localhost:3000`
 6. Run `yarn install`
-7. Run `yarn db:migrate`
+7. Run `yarn db:migrate`. After this step, the database schema is ready and you can deploy to Netlify.
 8. Run `yarn db:seed`
 9. Run `yarn dev`
 
@@ -48,6 +48,12 @@ The one-click deploy allows you to connect Netlify to your GitHub account to clo
 [![Deploy to Netlify button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/planetscale/nextjs-planetscale-starter)
 
 By clicking the above button, you will be navigated to the Netlify’s direct deploy page with the project’s repository passed as parameters in the url. Click the **Connect to GitHub** button, name your repository and enter....
+
+TODO what environment variables are needed for Netlify and how to get them
+- `DATABASE_URL`
+- `NEXTAUTH_URL`
+- `NEXT_PUBLIC_BASE_URL`
+- `BASE_URL`
 
 > Note: The initial build will fail if the database is not set up following TODO
 
