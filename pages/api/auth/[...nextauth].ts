@@ -13,11 +13,6 @@ export default NextAuth({
   session: {
     jwt: true,
   },
-  theme: {
-    colorScheme: "auto",
-    brandColor: "#fff",
-    logo: `${process.env.BASE_URL}/assets/planet-scale.svg`,
-  },
   pages: {
     signIn: "/sign-in",
     // signOut: "/auth/logout",
