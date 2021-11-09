@@ -1,6 +1,5 @@
 import AppLayout from "@lib/components/Layouts/AppLayout";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { useSession, signIn } from "next-auth/react";
 import { useQuery } from "react-query";
 import superagent from "superagent";
 
@@ -35,7 +34,10 @@ const Page = () => {
           <blockquote>
             <h1>Access Denied</h1>
             <h1>
-              <Link href="/sign-in">Login</Link> to see a secret message
+              <button type="button" onClick={() => signIn()}>
+                <a>Login</a>&nbsp;
+              </button>
+              to see a secret message
             </h1>
           </blockquote>
         </AppLayout>

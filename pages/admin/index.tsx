@@ -3,10 +3,10 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import { GetServerSidePropsContext } from "next";
-import { getManyUser } from "@client/user/queries/getManyUser";
 import classNames from "classnames";
 import AdminLayout from "@lib/components/Layouts/AdminLayout";
 import { getSession } from "@lib/auth/session";
+import superagent from "superagent";
 
 const statusStyles = {
   true: "bg-green-100 text-green-800",
@@ -17,7 +17,7 @@ function Page() {
   const router = useRouter();
   const {
     status,
-    data: { user },
+    data: { session },
   } = useSession({
     required: true,
     onUnauthenticated() {
@@ -30,7 +30,7 @@ function Page() {
   }
 
   const usersQuery = useQuery(["users"], async () => {
-    const data = await getManyUser({
+    const data = await superagent.get("/api/users").send({
       select: {
         id: true,
         name: true,
@@ -46,7 +46,7 @@ function Page() {
       },
     });
 
-    return data;
+    return data.body;
   });
 
   if (usersQuery.isLoading) {

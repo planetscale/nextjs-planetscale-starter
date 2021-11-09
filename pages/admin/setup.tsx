@@ -3,8 +3,9 @@ import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { _getManyUser } from "@api/user/_operations";
 import superagent from "superagent";
+
+import prisma from "@db";
 
 const MINIMUM_ACTIVITY_TIMEOUT = 850;
 type LoginFormValues = {
@@ -145,13 +146,13 @@ export default function Page({ csrfToken }) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const administrators = await _getManyUser({
+  const maybeAdministrator = await prisma.user.findFirst({
     where: {
       role: "admin",
     },
   });
 
-  if (administrators && administrators.length > 0) {
+  if (maybeAdministrator) {
     return {
       redirect: {
         destination: "/",

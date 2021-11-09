@@ -2,8 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
 import { createHash } from "crypto";
 import { hashPassword } from "@lib/auth/passwords";
-import { _createUser } from "@api/user/_operations";
-
+import prisma from "@db";
 /**
  * https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/cookie.js
  * https://github.com/nextauthjs/next-auth/issues/717#issuecomment-827031069
@@ -38,11 +37,12 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!validateCSRFToken(req, secret)) {
     return res.status(401).json({
-      message: "NOPE",
+      message: "Unauthorized",
     });
   }
+
   try {
-    const admin = await _createUser({
+    const admin = await prisma.user.create({
       data: {
         name: req.body.name,
         email: req.body.email,

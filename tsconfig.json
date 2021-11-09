@@ -8,8 +8,6 @@
       "@lib/*": ["lib/*"],
       "@components/*": ["lib/components/*"],
       "@components": ["lib/components/index"],
-      "@client/*": ["lib/client/*"],
-      "@client": ["lib/client/index"],
       "@db/*": ["db/*"],
       "@db": ["db/index"]
     },
