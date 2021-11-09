@@ -1,46 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
-import { createHash } from "crypto";
 import { hashPassword } from "@lib/auth/passwords";
 import prisma from "@db";
-/**
- * https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/cookie.js
- * https://github.com/nextauthjs/next-auth/issues/717#issuecomment-827031069
- */
-
-const validateCSRFToken = (req: NextApiRequest, secret: string): boolean => {
-  const useSecureCookies = true;
-  const csrfTokenName = `${
-    useSecureCookies ? "__Host-" : ""
-  }next-auth.csrf-token`;
-
-  if (csrfTokenName in req.cookies) {
-    const [csrfToken, csrfTokenHash] = req.cookies[csrfTokenName].split("|");
-    const expectedCsrfTokenHash = createHash("sha256")
-      .update(`${csrfToken}${secret}`)
-      .digest("hex");
-    if (csrfTokenHash === expectedCsrfTokenHash) {
-      // If hash matches then we trust the CSRF token value
-      // If this is a POST request and the CSRF Token in the POST request matches
-      // the cookie we have already verified is the one we have set, then the token is verified!
-      const csrfTokenVerified =
-        req.method === "POST" && csrfToken === req.body.csrfToken;
-      return csrfTokenVerified;
-    }
-  }
-
-  return false;
-};
 
 const post = async (req: NextApiRequest, res: NextApiResponse) => {
-  const secret = process.env.NEXTAUTH_SECRET;
-
-  if (!validateCSRFToken(req, secret)) {
-    return res.status(401).json({
-      message: "Unauthorized",
-    });
-  }
-
   try {
     const admin = await prisma.user.create({
       data: {
