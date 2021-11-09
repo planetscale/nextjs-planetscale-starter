@@ -31,8 +31,8 @@ TODO expand on steps, gotta do a few steps to set up the database and its schema
 4. Connect to your PlanetScale database shadow branch locally  \
    `pscale connect <database-name> shadow --port <port>`
 5. Fill in local environment variables for database URLs, NEXTAUTH_URL, and BASE_URL \
-   `DATABASE_URL="mysql://root@127.0.0.1:3309/starter"`
-   `SHADOW_DATABASE_URL="mysql://root@127.0.0.1:3310/starter`
+   `DATABASE_URL="mysql://root@127.0.0.1:3309/starter"` \
+   `SHADOW_DATABASE_URL="mysql://root@127.0.0.1:3310/starter` \
    `NEXTAUTH_URL=http://localhost:3000` \
    `NEXT_PUBLIC_BASE_URL=http://localhost:3000` \
    `BASE_URL=http://localhost:3000`
@@ -52,11 +52,10 @@ By clicking the above button, you will be navigated to the Netlify’s direct de
 
 TODO what environment variables are needed for Netlify and how to get them
 - `DATABASE_URL` (get this one from inside PlanetScale connect modal, Prisma dropdown and copy URL from snippet)
-- `NEXTAUTH_SECRET`
+- `NEXTAUTH_SECRET` (use https://generate-secret.now.sh/32 to create one, never actually used, but required)
 
-TODO are these needed? 
+TODO these cannot be filled out until you "Deploy to Netlify" and know the app's base URL:
 - `NEXTAUTH_URL`
-- `NEXT_PUBLIC_BASE_URL`
 - `BASE_URL`
 
 > Note: The initial build will fail if the database is not set up following TODO
@@ -71,10 +70,12 @@ TODO
 
 - https://github.com/nextauthjs/next-auth/issues/484
 
-What's not in this: security, security, security
+What's not in this: Security, security, security
 Cors
 Access Control to API routes
 Authorization on API routes
+
+API routes are public, so to be production ready, you will need.... TODO
 
 ## Useful Links
 
