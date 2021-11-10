@@ -6,7 +6,7 @@ publish = ".next"
 package = "@netlify/plugin-nextjs"
 
 [template.environment]
-DATABASE_URL = "Located inside PlanetScale connect dropdown, select Prisma, and copy URL from snippet. Follows the following format: mysql://[username]:[password]@[host]/[database]?sslaccept=strict"
-NEXTAUTH_SECRET = "Use https://generate-secret.now.sh/32 to create one. Required by NextAuth.js, but never used."
-BASE_URL = "Leave blank for now. You will fill this after the site is created and you have a base URL for your app. Example: https://laughing-fermat-f171ce.netlify.app/"
+DATABASE_URL = "Database URL, see documentation for more info."
+NEXTAUTH_SECRET = "Secret, use https://generate-secret.now.sh/32 to create one."
+BASE_URL = "Leave blank for now, see documentation for more info."
 NEXTAUTH_URL = "Leave blank for now. Same as BASE_URL."
