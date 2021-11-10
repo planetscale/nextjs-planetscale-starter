@@ -61,6 +61,10 @@ After the Netlify site is created and you have a base URL, you will need to fill
 
 Once it is live, go to the `/admin/setup` page to create an admin account to get started.
 
+### Admin accounts
+
+TODO about the `/admin` user dashboard, which is powered by PlanetScale
+
 ### Caveats
 
 TODO
