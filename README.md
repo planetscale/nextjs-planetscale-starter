@@ -44,46 +44,25 @@ A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#inst
 6. Run `yarn install`
 7. Run `yarn db:migrate`. After this step, the database schema is ready in PlanetScale.
 8. (Optional) Run `yarn db:seed` if you want to seed your database with users.
-9. Back in Netlify, now that your PlanetScale database is setup, you need to update the environment variables (found in Site settings > Build & deploy > Environment)
+9. Back in Netlify, now that your PlanetScale database is setup, you need to add two more environment variables (found in Site settings > Build & deploy > Environment): 
 - `DATABASE_URL`, get this one from inside PlanetScale connect modal, Prisma dropdown and copy URL from snippet
-- `NEXTAUTH_URL`, for example: https://laughing-fermat-f171ce.netlify.app/
+- `NEXTAUTH_URL`, this URL is the same as your Netlify's app's URL, for example: `https://laughing-fermat-f171ce.netlify.app/`
 
 Once the site is rebuilt in Netlify, go to the `/admin/setup` page to create an admin account to get started. Right now, you will only be able to create one admin account through this flow. 
 
 ### Admin accounts
 
-TODO about the `/admin` user dashboard, which is powered by PlanetScale
+Admin accounts have access to `/admin`, which contains a user dashboard (powered by PlanetScale). This dashboard is a great starting place to build out an admin dashboard for your app. 
 
 ### Caveats
 
-TODO
-
-**Next Auth Custom Sign Up Pages**
-
-- https://github.com/nextauthjs/next-auth/issues/484
-
-What's not in this: Security, security, security
-Cors
-Access Control to API routes
-Authorization on API routes
+What's not in this starter app?
+- CORS
+- Access Control to API routes
+- Authorization on API routes
 
 API routes are public, so to be production ready, you will need.... TODO
 
-## Useful Links
-
-**PlanetScale & Prisma**
-
-- https://docs.planetscale.com/reference/secure-connections
-- https://docs.planetscale.com/tutorials/automatic-prisma-migrations
-- https://www.prisma.io/docs/concepts/components/prisma-schema/relations/referential-integrity
-- https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database
-- https://www.prisma.io/docs/guides/database/seed-database
-
-**Next12**
-
-- https://nextjs.org/docs/api-reference/next/server
-- https://nextjs.org/docs/api-reference/edge-runtime
-
-## Customization and Extendability
-
-TODO
+TODO 
+**Next Auth Custom Sign Up Pages**
+- https://github.com/nextauthjs/next-auth/issues/484
