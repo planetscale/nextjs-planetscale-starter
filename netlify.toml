@@ -6,7 +6,6 @@ publish = ".next"
 package = "@netlify/plugin-nextjs"
 
 [template.environment]
-DATABASE_URL = "Database URL, see documentation for more info."
 NEXTAUTH_SECRET = "Secret, use https://generate-secret.now.sh/32 to create one."
-BASE_URL = "Leave blank for now, see documentation for more info."
-NEXTAUTH_URL = "Leave blank for now. Same as BASE_URL."
+DATABASE_URL = "Database URL, leave blank for now. See docs for more info."
+NEXTAUTH_URL = "NextAuth URL, leave blank for now. See docs for more info."
