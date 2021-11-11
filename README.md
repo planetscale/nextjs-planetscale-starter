@@ -6,7 +6,7 @@ This README will guide you in getting up and running with Next.js starter app wi
 
 We have configured this template for you to one-click deploy directly to Netlify. Alternatively, you can manually deploy to your choice of hosting platform for Next.js applications. For more information on why we created this starter app, read me more in our [blog post]().
 
-[![Live Demo](https://example.com/live-demo-button)](https://example.com)
+[🖼 Live Demo](https://nextjs-planetscale-starter.netlify.app/)
 
 ## 🥞 Stack
 
