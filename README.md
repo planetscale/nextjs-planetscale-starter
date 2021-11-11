@@ -32,8 +32,8 @@ Once the site is deployed, you need to set up your PlanetScale database that is 
 **Prerequisites:**
 A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#installation), and [Yarn](https://yarnpkg.com/getting-started/install)
 
-1. Create a PlanetScale database
-2. Create a shadow branch
+1. Create a PlanetScale database and create a `shadow` branch
+2. In your local development environment where you have the PlanetScale CLI installed, `git clone` the repo Netlify created for you for your app.
 3. Connect to your PlanetScale database main branch locally \
    `pscale connect <database-name> main --port <port>`
 4. Connect to your PlanetScale database shadow branch locally  \
@@ -47,6 +47,9 @@ A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#inst
 9. Back in Netlify, now that your PlanetScale database is setup, you need to add two more environment variables (found in Site settings > Build & deploy > Environment): 
 - `DATABASE_URL`, get this one from inside PlanetScale connect modal, Prisma dropdown and copy URL from snippet
 - `NEXTAUTH_URL`, this URL is the same as your Netlify's app's URL, for example: `https://laughing-fermat-f171ce.netlify.app/`
+10. Under Deploys, select the *Trigger deploy* button to build your app with the new environment variables. 
+
+Your app should be ready for use now!
 
 Once the site is rebuilt in Netlify, go to the `/admin/setup` page to create an admin account to get started. Right now, you will only be able to create one admin account through this flow. 
 
