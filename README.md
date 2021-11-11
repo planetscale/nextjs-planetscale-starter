@@ -1,8 +1,8 @@
-# nextjs-planetscale-starter
+# Next.js Starter App for Netlify
 
 ## Overview
 
-This README will guide you in getting up and running with Next.js starter app with authentication. Immediately, you can allow users to sign up or login to your app, including a built-in admin panel with a users table (data queried from your PlanetScale database).
+This README will guide you in getting up and running with Next.js starter app with authentication (NextAuth.js) and deployed on Netlify. Immediately, you can allow users to sign up or login to your app, including a built-in admin panel with a users table (powered by PlanetScale).
 
 We have configured this template for you to one-click deploy directly to Netlify. Alternatively, you can manually deploy to your choice of hosting platform for Next.js applications. For more information on why we created this starter app, read me more in our [blog post]().
 
@@ -27,7 +27,7 @@ The one-click deploy allows you to connect Netlify to your GitHub account to clo
 
 By clicking the above button, you will be navigated to the Netlify’s direct deploy page with the project’s repository passed as parameters in the url. Click the **Connect to GitHub** button, name your repository and enter. 
 
-Once the site is deployed, you need to set up your PlanetScale database that is working behind the scenes. These are the following steps required to do that: 
+Once the site is deployed, you **must** to set up your PlanetScale database that is working behind the scenes. These are the following steps required to do that: 
 
 **Prerequisites:**
 A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#installation), and [Yarn](https://yarnpkg.com/getting-started/install)
