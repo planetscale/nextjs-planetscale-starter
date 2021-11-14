@@ -27,7 +27,7 @@ The one-click deploy allows you to connect Netlify to your GitHub account to clo
 
 [![Deploy to Netlify button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/planetscale/nextjs-planetscale-starter)
 
-By clicking the above button, you will be navigated to the Netlify’s direct deploy page with the project’s repository passed as parameters in the url. Click the **Connect to GitHub** button, name your repository and enter. 
+By clicking the above button, you will be navigated to the Netlify’s direct deploy page with the project’s repository passed as parameters in the URL. Click the **Connect to GitHub** button, name your repository, fill in the secret (for NextAuth.js), and Save & Deploy. 
 
 Once the site is deployed, you **must** to set up your PlanetScale database that is working behind the scenes. These are the following steps required to do that: 
 
