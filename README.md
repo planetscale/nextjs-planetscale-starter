@@ -35,12 +35,13 @@ A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#inst
 1. Create a PlanetScale database and create a `shadow` branch
 2. In your local development environment where you have the PlanetScale CLI installed, `git clone` the repo Netlify created for you for your app.
 3. Connect to your PlanetScale database main branch locally \
-   `pscale connect <database-name> main --port <port>`
+   `pscale connect <database-name> main --port 3309`
 4. Connect to your PlanetScale database shadow branch locally  \
-   `pscale connect <database-name> shadow --port <port>`
-5. Fill in local environment variables for database URLs:\
+   `pscale connect <database-name> shadow --port 3310`
+5. Fill in local environment variables:\
    `DATABASE_URL="mysql://root@127.0.0.1:3309/<database-name>"` \
-   `SHADOW_DATABASE_URL="mysql://root@127.0.0.1:3310/<database-name>` 
+   `SHADOW_DATABASE_URL="mysql://root@127.0.0.1:3310/<database-name>` \
+   `NEXTAUTH_SECRET`, use https://generate-secret.now.sh/32 to create a secret. This is not used, but required by NextAuth.js. 
 6. Run `yarn install`
 7. Run `yarn db:migrate`. After this step, the database schema is ready in PlanetScale.
 8. (Optional) Run `yarn db:seed` if you want to seed your database with users.
@@ -48,6 +49,7 @@ A PlanetScale account, [PlanetScale CLI](https://github.com/planetscale/cli#inst
 - `DATABASE_URL`, get this one from inside PlanetScale connect modal, Prisma dropdown and copy URL from snippet
 - `NEXTAUTH_URL`, this URL is the same as your Netlify's app's URL, for example: `https://laughing-fermat-f171ce.netlify.app/`
 10. Under Deploys, select the *Trigger deploy* button to build your app with the new environment variables. 
+- `NEXTAUTH_SECRET`, use https://generate-secret.now.sh/32 to create a secret. This is not used, but required by NextAuth.js.
 
 Your app should be ready for use now!
 
@@ -59,13 +61,10 @@ Admin accounts have access to `/admin`, which contains a user dashboard (powered
 
 ### Caveats
 
-What's not in this starter app?
-- CORS
-- Access Control to API routes
-- Authorization on API routes
+This application is close to production ready, but there are a few things you will need to consider and implement.
 
-API routes are public, so to be production ready, you will need.... TODO
+#### What's not in this starter app?
 
-TODO 
-**Next Auth Custom Sign Up Pages**
-- https://github.com/nextauthjs/next-auth/issues/484
+- **Email Sending & Password Resets:**
+We've left this implementation up to the user because we did not want to make adding an email provider a requirement. The default `VerificationToken` schema has the basics required for implementing sign up verification, or password reset requests.
+- **API Security:** Although NextAuth.js can be used for authentication, it does not provide authorization out of the box. The application comes with and example of protecting API routes using NextAuth.js. It does not cover things like making sure only administrators can access certain routes or making sure that only a user is able to update their account. 
