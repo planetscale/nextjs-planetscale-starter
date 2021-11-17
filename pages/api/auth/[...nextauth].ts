@@ -54,22 +54,21 @@ export default NextAuth({
           });
 
           if (!maybeUser) {
-            const { email, password } = credentials;
-
-            if (!email || !email.includes("@")) {
-              throw new Error("Invalid email");
-            }
-
-            if (!password || password.trim().length < 12) {
-              throw new Error(
-                "Invalid input - password should be at least 12 characters long."
-              );
+            if (!credentials.password || !credentials.email) {
+              throw new Error("Invalid Credentials");
             }
 
             maybeUser = await prisma.user.create({
               data: {
                 email: credentials.email,
                 password: await hashPassword(credentials.password),
+              },
+              select: {
+                id: true,
+                email: true,
+                password: true,
+                name: true,
+                role: true,
               },
             });
           } else {
@@ -79,7 +78,7 @@ export default NextAuth({
             );
 
             if (!isValid) {
-              throw new Error("Incorrect password");
+              throw new Error("Invalid Credentials");
             }
           }
 
@@ -132,23 +131,13 @@ export default NextAuth({
           throw new Error("Unauthorized.");
         }
 
-        const { email, password } = credentials;
-        if (!email || !email.includes("@")) {
-          throw new Error("Invalid email");
-        }
-
-        if (!password || password.trim().length < 12) {
-          throw new Error(
-            "Invalid input - password should be at least 12 characters long."
-          );
-        }
         const isValid = await verifyPassword(
           credentials.password,
           maybeUser.password
         );
 
         if (!isValid) {
-          throw new Error("Incorrect password");
+          throw new Error("Invalid Credentials");
         }
 
         return {
