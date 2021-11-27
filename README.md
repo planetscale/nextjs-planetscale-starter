@@ -4,7 +4,7 @@
 
 This README will guide you in getting up and running with Next.js starter app with authentication (NextAuth.js) and deployed on Netlify. Immediately, you can allow users to sign up or login to your app, including a built-in admin panel with a users table (powered by PlanetScale).
 
-We have configured this template for you to one-click deploy directly to Netlify. Alternatively, you can manually deploy to your choice of hosting platform for Next.js applications. For more information on why we created this starter app, read me more in our [blog post]().
+We have configured this template for you to one-click deploy directly to Netlify. Alternatively, you can manually deploy to your choice of hosting platform for Next.js applications. For more information on why we created this starter app, read me more in our [blog post](https://planetscale.com/blog/nextjs-netlify-planetscale-starter-app).
 
 [🖼 Live Demo](https://nextjs-planetscale-starter.netlify.app/)
 
