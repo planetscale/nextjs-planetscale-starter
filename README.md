@@ -14,6 +14,7 @@ We have configured this template for you to one-click deploy directly to Netlify
 
 - Framework - [Next.js v12](https://nextjs.org)
 - Language - [TypeScript](https://www.typescriptlang.org/)
+- Auth - [NextAuth.js](https://next-auth.js.org/)
 - Database - [PlanetScale](https://planetscale.com)
 - ORM - [Prisma](https://prisma.io)
 - Hosting - [Netlify](https://netlify.com)
