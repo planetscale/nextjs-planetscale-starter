@@ -42,7 +42,7 @@ Next, you'll be asked to configure your site variables. For the Secret value, na
 
 Your site will take about a minute to build and then you'll be taken to a settings page. A unique Netlify URL will be generated for the project. You can click that now to see your live site!
 
-**Important:** Once the site is deployed, [follow these steps](https://docs.planetscale.com/tutorials/nextjs-planetscale-netlify-template) to get your PlanetScale database up and running. 
+**Important:** Once the site is deployed, [follow these steps](https://planetscale.com/docs/tutorials/nextjs-planetscale-netlify-template) to get your PlanetScale database up and running.
 
 > Note: If you do not follow the steps to get your database set up, you will see a 500 error on your live site.
 
@@ -60,5 +60,5 @@ This application is close to production ready, but there are a few things you wi
 
 - **Email Sending & Password Resets:**
 We've left this implementation up to the user because we did not want to make adding an email provider a requirement. The default `VerificationToken` schema has the basics required for implementing sign up verification, or password reset requests.
-- **API Security:** Although NextAuth.js can be used for authentication, it does not provide authorization out of the box. The application comes with and example of protecting API routes using NextAuth.js. It does not cover things like making sure only administrators can access certain routes or making sure that only a user is able to update their account. 
+- **API Security:** Although NextAuth.js can be used for authentication, it does not provide authorization out of the box. The application comes with and example of protecting API routes using NextAuth.js. It does not cover things like making sure only administrators can access certain routes or making sure that only a user is able to update their account.
 - **Multiple admin accounts**
